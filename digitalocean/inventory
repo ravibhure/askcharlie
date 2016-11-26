@@ -1,0 +1,2 @@
+[guestbook]
+162.243.102.6 ansible_connection=ssh ansible_ssh_user=root

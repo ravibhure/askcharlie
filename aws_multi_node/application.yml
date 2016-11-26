@@ -1,0 +1,25 @@
+---
+# Install rails app guestbook
+- hosts: appserver
+  remote_user: root
+  become: yes
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - role: ruby
+      rvm1_rubies: 
+        - 'ruby-2.3.0'
+      rvm1_user: root
+      rvm1_install_flags: '--auto-dotfiles'
+      rvm1_install_path: /usr/local/rvm
+    - role: application
+      app_repository: https://github.com/askcharlie/guestbook.git
+      app_redis_host: localhost
+      app_db_host: localhost
+      app_db_user: charlie
+      app_db_password: charlie
+      app_db_name: guestbook

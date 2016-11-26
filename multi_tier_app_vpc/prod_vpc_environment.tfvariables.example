@@ -1,0 +1,52 @@
+# Environment name
+environment_name = "production"
+global.key_name = "ravi"
+global.key_file = "~/.ssh/ravi.pem"
+global.user_name = "ubuntu"
+global.bastion_name = "ec2-user"
+
+# Provider
+# ravibhure auth
+provider.access_key = "XXXXXXXXXXXXXXXX"
+provider.secret_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXxxxxx"
+provider.region = "us-west-2"
+
+# VPC
+vpc.owner_id                  = "ravi"
+vpc.cidr_block                = "10.0.0.0/16"
+
+vpc_public_subnet.cidr_block         = "10.0.0.0/24"
+vpc_public_subnet.availability_zone  = "us-west-2a"
+
+vpc_private_subnet.cidr_block        = "10.0.2.0/24"
+vpc_private_subnet.availability_zone = "us-west-2a"
+
+# Instances
+nat.availability_zone       = "us-west-2a"
+nat.ami_image               = "ami-75ae8245"
+nat.ami_type                = "t2.micro"
+
+web-proxy.availability_zone = "us-west-2a"
+web-proxy.ami_image         = "ami-e54f5f84"
+web-proxy.ami_type          = "t2.micro"
+web-proxy.count             = "1"
+
+postgresql.availability_zone     = "us-west-2a"
+postgresql.ami_image             = "ami-e54f5f84"
+postgresql.ami_type              = "t2.micro"
+postgresql.count                 = "1"
+
+redis.availability_zone     = "us-west-2a"
+redis.ami_image             = "ami-e54f5f84"
+redis.ami_type              = "t2.micro"
+redis.count                 = "1"
+
+app.availability_zone       = "us-west-2a"
+app.ami_image               = "ami-e54f5f84"
+app.ami_type                = "t2.micro"
+app.count                   = "2"
+
+watchdog.availability_zone  = "us-west-2a"
+watchdog.ami_image          = "ami-e54f5f84"
+watchdog.ami_type           = "t2.micro"
+watchdog.omd_site           = "watchdog"

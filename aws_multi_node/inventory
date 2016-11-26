@@ -1,0 +1,6 @@
+[postgresql]
+35.163.35.58 ansible_connection=ssh ansible_ssh_user=ubuntu
+[redis]
+35.163.106.121 ansible_connection=ssh ansible_ssh_user=ubuntu
+[appserver]
+35.164.18.122 ansible_connection=ssh ansible_ssh_user=ubuntu

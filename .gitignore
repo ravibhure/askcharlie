@@ -1,0 +1,7 @@
+*terraform.tfstate*
+*terraform.tfvars
+*secret*
+*ansible.cfg*
+*roles*
+digitalocean/roles*
+aws_multi_node/roles*

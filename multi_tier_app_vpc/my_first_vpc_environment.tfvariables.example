@@ -1,0 +1,42 @@
+# Environment name
+environment_name = "my_first_vpc_environment"
+ec2_ami = "ami-e54f5f84"
+ami_type = "t2.micro"
+key_path = "~/.ssh/ravi.pem"
+
+
+# Provider
+# ravibhure auth
+provider.access_key = "XXXXXXXXXXXXXXXXXXXXXXXXXX"
+provider.secret_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+provider.region = "us-west-2"
+
+# VPC
+vpc.owner_id                  = "ravi"
+vpc.cidr_block                = "10.0.0.0/16"
+
+vpc_public_subnet.cidr_block         = "10.0.0.0/24"
+vpc_public_subnet.availability_zone  = "us-west-2a"
+
+vpc_private_subnet.cidr_block        = "10.0.2.0/24"
+vpc_private_subnet.availability_zone = "us-west-2a"
+
+# Instances
+nat.key_name                = "ravi"
+nat.availability_zone       = "us-west-2a"
+
+web-proxy.key_name          = "ravi"
+web-proxy.availability_zone = "us-west-2a"
+
+postgresql.key_name              = "ravi"
+postgresql.availability_zone     = "us-west-2a"
+
+redis.key_name              = "ravi"
+redis.availability_zone     = "us-west-2a"
+
+app.key_name                = "ravi"
+app.availability_zone       = "us-west-2a"
+
+watchdog.key_name           = "ravi"
+watchdog.availability_zone  = "us-west-2a"
+watchdog.omd_site           = "watchdog"

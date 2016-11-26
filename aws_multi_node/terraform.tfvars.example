@@ -1,0 +1,5 @@
+# AWS provider
+access_key = ""
+secret_key = ""
+key_path = ""
+key_name = ""

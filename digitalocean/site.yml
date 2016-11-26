@@ -1,0 +1,38 @@
+---
+# Install rails app guestbook
+- hosts: all
+  remote_user: root
+  become: yes
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - role: postgresql
+      postgresql_version: 9.5
+      postgresql_databases:
+        - name: guestbook
+          owner: charlie
+      postgresql_users:
+        - name: charlie
+          pass: charlie
+      postgresql_user_privileges:
+        - name: charlie
+          db: guestbook
+    - role: redis
+      redis_bind_interface: 127.0.0.1   # Set the interface to 0.0.0.0 to listen on all interfaces.
+    - role: ruby
+      rvm1_rubies: 
+        - 'ruby-2.3.0'
+      rvm1_user: root
+      rvm1_install_flags: '--auto-dotfiles'
+      rvm1_install_path: /usr/local/rvm
+    - role: application
+      app_repository: https://github.com/askcharlie/guestbook.git
+      app_redis_host: localhost
+      app_db_host: localhost
+      app_db_user: charlie
+      app_db_password: charlie
+      app_db_name: guestbook

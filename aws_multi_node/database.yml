@@ -1,0 +1,23 @@
+---
+# Install rails app guestbook
+- hosts: postgresql
+  remote_user: root
+  become: yes
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - role: postgresql
+      postgresql_version: 9.5
+      postgresql_databases:
+        - name: guestbook
+          owner: charlie
+      postgresql_users:
+        - name: charlie
+          pass: charlie
+      postgresql_user_privileges:
+        - name: charlie
+          db: guestbook

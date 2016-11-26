@@ -1,0 +1,10 @@
+---
+- src: ANXS.postgresql
+  name: postgresql
+- src: geerlingguy.redis
+  name: redis
+- src: rvm_io.ruby
+  name: ruby
+# app from GitHub
+- src: https://github.com/ravibhure/guestbook-application
+  name: application
