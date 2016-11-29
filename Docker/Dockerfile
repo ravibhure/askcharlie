@@ -3,15 +3,16 @@
 # Based on Ubuntu
 ############################################################
 FROM ubuntu:14.04
+# Install deps
 RUN apt-get update
-
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-software-properties
+#RUN apt-get upgrade -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common git python-dev wget apt-transport-https libffi-dev libssl-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-pip
 # Install Ansible
-RUN apt-add-repository -y ppa:ansible/ansible
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y software-properties-common git python-dev wget apt-transport-https libffi-dev libssl-dev
-RUN apt-get install -y python-pip
-RUN apt-get install -y ansible
+RUN DEBIAN_FRONTEND=noninteractive apt-add-repository -y ppa:ansible/ansible
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ansible
 # Cleanup
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Ansible stuff starts here
